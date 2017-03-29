@@ -12,6 +12,27 @@
     public static class Ensure
     {
         /// <summary>
+        /// Throw an exception of type T if any of the parameters is not null
+        /// </summary>
+        /// <typeparam name="T">The exception to throw if the test fails.</typeparam>
+        /// <param name="targets">The target values to test</param>
+        public static void IsNull<T>(params object[] targets) where T : Exception, new()
+        {
+            foreach (var obj in targets)
+                if (obj != null)
+                    throw new T();
+        }
+
+        /// <summary>
+        /// Throw an ArgumentException if any parameter is not null
+        /// </summary>
+        /// <param name="targets">The target values to test</param>
+        public static void IsNull(params object[] targets)
+        {
+            IsNotNull<ArgumentException>(targets);
+        }
+
+        /// <summary>
         /// Throw an exception of type T if any of the parameters is null
         /// </summary>
         /// <typeparam name="T">The exception to throw if the test fails.</typeparam>
