@@ -67,6 +67,8 @@ namespace TheGarageLab.Ensures.Test
             string white = "   ";
             Ensure.IsNotNullOrEmpty(notNullOrEmpty);
             Ensure.IsNotNullOrEmpty<ArgumentNullException>(notNullOrEmpty);
+            Ensure.IsNotNullOrEmpty(white);
+            Ensure.IsNotNullOrEmpty<ArgumentNullException>(white);
             Assert.Throws<ArgumentException>(() => { Ensure.IsNotNullOrEmpty(empty); });
             Assert.Throws<ArgumentNullException>(() => { Ensure.IsNotNullOrEmpty<ArgumentNullException>(empty); });
             Assert.Throws<ArgumentException>(() => { Ensure.IsNotNullOrEmpty(null); });
